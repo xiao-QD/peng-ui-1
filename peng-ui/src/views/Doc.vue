@@ -1,8 +1,5 @@
 <template>
-  <div class="topnav">
-    <div class="logo">1</div>
-    <div class="menu">2</div>
-  </div>
+  <topnav></topnav>
   <div class="content">
     <aside>边栏</aside>
     <main>内容</main>
@@ -10,7 +7,12 @@
 </template>
 
 <script lang="ts">
-export default {};
+import Topnav from "../components/Topnav.vue";
+export default {
+  components: {
+    Topnav,
+  },
+};
 </script>
 
 <style></style>
