@@ -1,9 +1,4 @@
 <template>
-  <div>
-    导航栏|<router-link to="/">Peng</router-link>|
-    <router-link to="/Peng2">Peng2</router-link>
-  </div>
-  <hr />
   <router-view></router-view>
 </template>
 

@@ -19,6 +19,4 @@
 export default {};
 </script>
 
-<style lang="scss" scoped>
-.topnar
-</style>
+<style lang="scss" scoped></style>
