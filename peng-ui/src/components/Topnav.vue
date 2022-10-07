@@ -1,15 +1,26 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo" @click="changeMenu">LOGO</div>
     <div class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
+      <li>{{ menuVisible }}</li>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-export default {};
+import { inject, Ref, ref } from "vue";
+export default {
+  setup() {
+    const menuVisible = inject<Ref<boolean>>("menuVisible");
+
+    const changeMenu = () => {
+      menuVisible.value = !menuVisible.value;
+    };
+    return { menuVisible, changeMenu };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

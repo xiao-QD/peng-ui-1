@@ -3,7 +3,10 @@
 </template>
 
 <script setup lang="ts">
-import Peng from "./components/Peng.vue";
+import { provide, ref } from "vue";
+
+const menuVisible = ref(true);
+provide("menuVisible", menuVisible);
 </script>
 
 <style scoped>
