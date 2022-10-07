@@ -1,24 +1,29 @@
 <template>
-  <topnav></topnav>
-  <div class="content">
-    <aside v-if="menuVisible">
-      <h2>组件列表</h2>
-      <ol>
-        <li>
-          <router-link to="/doc/switch">Switch 组件</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/button">Button 组件</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/dialog">Dialog 组件</router-link>
-        </li>
-        <li>
-          <router-link to="/doc/tabs">Tabs 组件</router-link>
-        </li>
-      </ol>
-    </aside>
-    <main>内容</main>
+  <div class="layout">
+    <topnav></topnav>
+    <div class="content">
+      <aside v-if="menuVisible">
+        <h2>组件列表</h2>
+        <ol>
+          <li>
+            <router-link to="/doc/switch">Switch 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/button">Button 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/dialog">Dialog 组件</router-link>
+          </li>
+          <li>
+            <router-link to="/doc/tabs">Tabs 组件</router-link>
+          </li>
+        </ol>
+      </aside>
+      <main>
+        <h1>这是主要区域</h1>
+        <router-view></router-view>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -42,14 +47,13 @@ export default {
   flex-direction: column;
   height: 100vh;
   > .nav {
-    flex-shrink: 0; //高度变化时不收缩
+    flex-shrink: 0;
   }
   > .content {
-    flex-grow: 1; //高度变化时占据剩余空间
-    padding-top: 75px;
-    padding-left: 153px;
+    flex-grow: 1;
+    padding-top: 60px;
+    padding-left: 156px;
     @media (max-width: 500px) {
-      padding-top: 52px;
       padding-left: 0;
     }
   }
@@ -57,12 +61,12 @@ export default {
 .content {
   display: flex;
   > aside {
-    flex-shrink: 0; //宽度变化时不收缩
+    flex-shrink: 0;
   }
   > main {
-    flex-grow: 1; //宽度变化时占据剩余空间
+    flex-grow: 1;
     padding: 16px;
-    background-color: lightgreen;
+    background: lightgreen;
   }
 }
 aside {
@@ -72,7 +76,7 @@ aside {
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 85px;
+  padding-top: 70px;
   height: 100%;
   > h2 {
     margin-bottom: 4px;

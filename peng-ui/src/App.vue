@@ -4,21 +4,17 @@
 
 <script setup lang="ts">
 import { provide, ref } from "vue";
+import { router } from "./router";
 
-const menuVisible = ref(true);
+const width = document.documentElement.clientWidth;
+const menuVisible = ref(width > 500 ? true : false);
 provide("menuVisible", menuVisible);
+
+router.afterEach(() => {
+  if (width <= 500) {
+    menuVisible.value = false;
+  }
+});
 </script>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped></style>

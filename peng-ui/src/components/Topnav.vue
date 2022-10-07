@@ -1,37 +1,37 @@
 <template>
   <div class="topnav">
-    <div class="logo" @click="changeMenu">LOGO</div>
-    <div class="menu">
+    <div class="logo">LOGO</div>
+    <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
-      <li>{{ menuVisible }}</li>
-    </div>
+    </ul>
+    <span class="toggleAside" @click="toggleMenu"></span>
   </div>
 </template>
 
 <script lang="ts">
-import { inject, Ref, ref } from "vue";
+import { inject, Ref } from "vue";
 export default {
   setup() {
     const menuVisible = inject<Ref<boolean>>("menuVisible");
 
-    const changeMenu = () => {
+    const toggleMenu = () => {
       menuVisible.value = !menuVisible.value;
     };
-    return { menuVisible, changeMenu };
+    return { menuVisible, toggleMenu };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .topnav {
+  background: pink;
+  display: flex;
+  padding: 16px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: pink;
-  display: flex;
-  padding: 16px;
   z-index: 10;
   justify-content: center;
   align-items: center;
@@ -41,22 +41,21 @@ export default {
   }
   > .menu {
     display: flex;
-    flex-direction: row;
     white-space: nowrap;
     flex-wrap: nowrap;
     > li {
-      margin: 10px 1em;
+      margin: 0 1em;
     }
   }
   > .toggleAside {
-    display: none;
     width: 24px;
     height: 24px;
-    background-color: red;
+    background: red;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
+    display: none;
   }
   @media (max-width: 500px) {
     > .menu {
