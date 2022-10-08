@@ -1,19 +1,21 @@
 <template>
-  <button @click="changeShow" :class="{ checked }">
-    <span></span>
-  </button>
+  <button @click="toggle" :class="{ checked: value }"><span></span></button>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 
-const checked = ref(true);
-const changeShow = () => {
-  checked.value = !checked.value;
+const props = defineProps({
+  value: Boolean,
+});
+
+const emit = defineEmits(["changeShow"]);
+const toggle = () => {
+  emit("changeShow", !props.value);
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 $h: 22px;
 $h2: $h - 4px;
 button {
@@ -21,7 +23,7 @@ button {
   width: $h * 2;
   border: none;
   background: grey;
-  border-radius: $h/2;
+  border-radius: calc($h2 / 2);
   position: relative;
 }
 span {
@@ -31,13 +33,12 @@ span {
   height: $h2;
   width: $h2;
   background: white;
-  border-radius: $h2 / 2;
+  border-radius: calc($h2 / 2);
   transition: left 250ms;
 }
 button.checked {
   background: blue;
 }
-
 button.checked > span {
   left: calc(100% - #{$h2} - 2px);
 }

@@ -1,7 +1,7 @@
 <template>
-  <div>button</div>
+  <div>我是button</div>
 </template>
 
-<script setup lang="ts"></script>
+<script></script>
 
-<style scoped></style>
+<style></style>
