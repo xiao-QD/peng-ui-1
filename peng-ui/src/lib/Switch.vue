@@ -1,17 +1,26 @@
 <template>
-  <button><span></span></button>
+  <button @click="changeShow" :class="{ checked }">
+    <span></span>
+  </button>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
 
-<style lang="scss" scoped>
+const checked = ref(true);
+const changeShow = () => {
+  checked.value = !checked.value;
+};
+</script>
+
+<style scoped lang="scss">
 $h: 22px;
 $h2: $h - 4px;
 button {
   height: $h;
   width: $h * 2;
   border: none;
-  background: blue;
+  background: grey;
   border-radius: $h/2;
   position: relative;
 }
@@ -24,7 +33,11 @@ span {
   background: white;
   border-radius: $h2 / 2;
 }
-button:hover > span {
+button.checked {
+  background: blue;
+}
+
+button.checked > span {
   left: calc(100% - #{$h2} - 2px);
 }
 </style>
