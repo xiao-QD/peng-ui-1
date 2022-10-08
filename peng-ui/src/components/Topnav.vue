@@ -55,7 +55,8 @@ export default {
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    display: none;
+    // display: none;
+    display: inline-block;
   }
   @media (max-width: 500px) {
     > .menu {
