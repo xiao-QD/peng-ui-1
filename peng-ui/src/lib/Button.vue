@@ -1,5 +1,5 @@
 <template>
-  <button class="peng-button" :class="`theme-${theme}`">
+  <button class="peng-button" :class="`peng-theme-${theme}`">
     <slot></slot>
   </button>
 </template>
@@ -13,7 +13,7 @@ defineProps({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
