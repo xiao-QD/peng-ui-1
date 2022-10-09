@@ -1,9 +1,11 @@
 <template>
   <template v-if="visible">
-    <div class="peng-dialog-overlay"></div>
+    <div class="peng-dialog-overlay" @click="onclickOverlay"></div>
     <div class="peng-dialog-wrapper">
       <div class="peng-dialog">
-        <header>标题 <span class="peng-dialog-close"></span></header>
+        <header>
+          标题 <span @click="close" class="peng-dialog-close"></span>
+        </header>
         <main>
           <p>1</p>
           <p>2</p>
@@ -19,12 +21,25 @@
 
 <script setup lang="ts">
 import Button from "./Button.vue";
-defineProps({
+const props = defineProps({
   visible: {
     type: Boolean,
     default: false,
   },
+  closeOnclickOverlay: {
+    type: Boolean,
+    default: true,
+  },
 });
+const emits = defineEmits(["update:visible"]);
+const close = () => {
+  emits("update:visible", false);
+};
+const onclickOverlay = () => {
+  if (props.closeOnclickOverlay) {
+    close();
+  }
+};
 </script>
 
 <style lang="scss">
