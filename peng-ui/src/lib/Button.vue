@@ -1,15 +1,28 @@
 <template>
-  <button class="peng-button" :class="`peng-theme-${theme}`">
+  <button class="peng-button" :class="classes">
     <slot></slot>
   </button>
 </template>
 
 <script setup lang="ts">
-defineProps({
+import { computed } from "@vue/reactivity";
+
+const props = defineProps({
   theme: {
     type: String,
     default: "button",
   },
+  size: {
+    type: String,
+    default: "normal",
+  },
+});
+
+const classes = computed(() => {
+  return {
+    [`peng-theme-${props.theme}`]: props.theme,
+    [`peng-size-${props.size}`]: props.size,
+  };
 });
 </script>
 
@@ -47,6 +60,34 @@ $radius: 4px;
   }
   &::-moz-focus-inner {
     border: 0;
+  }
+  &.peng-theme-link {
+    border-color: transparent;
+    box-shadow: none;
+    color: $blue;
+    &:hover,
+    &:focus {
+      color: lighten($blue, 10%);
+    }
+  }
+  &.peng-theme-text {
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,
+    &:focus {
+      background: darken(white, 5%);
+    }
+  }
+  &.peng-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+  &.peng-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
   }
 }
 </style>
