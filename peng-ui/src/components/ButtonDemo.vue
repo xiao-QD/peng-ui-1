@@ -45,6 +45,11 @@
     <Button disabled theme="link">禁用链接按钮</Button>
     <Button disabled theme="text">禁用文本按钮</Button>
   </div>
+  <h2>示例5,加载中</h2>
+  <div>
+    <Button loading>加载中</Button>
+    <Button>加载完成</Button>
+  </div>
 </template>
 
 <script lang="ts" setup>
