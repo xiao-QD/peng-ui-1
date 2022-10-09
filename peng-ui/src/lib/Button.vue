@@ -1,5 +1,5 @@
 <template>
-  <button class="peng-button" :class="classes">
+  <button class="peng-button" :class="classes" :disabled="disabled">
     <slot></slot>
   </button>
 </template>
@@ -20,6 +20,10 @@ const props = defineProps({
     type: String,
     default: "normal",
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const classes = computed(() => {
@@ -38,6 +42,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$grey: grey;
 
 .peng-button {
   box-sizing: border-box;
@@ -143,6 +148,22 @@ $red: red;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+  &.peng-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.peng-theme-link,
+  &.peng-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
