@@ -11,8 +11,8 @@
           <p>2</p>
         </main>
         <footer>
-          <Button>取消</Button>
-          <Button level="main">确定</Button>
+          <Button @click="cancel">取消</Button>
+          <Button @click="ok" level="main">确定</Button>
         </footer>
       </div>
     </div>
@@ -30,13 +30,32 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  ok: {
+    type: Function,
+  },
+  cancel: {
+    type: Function,
+  },
 });
-const emits = defineEmits(["update:visible"]);
+const emits = defineEmits(["update:visible", "ok", "cancel"]);
 const close = () => {
   emits("update:visible", false);
 };
 const onclickOverlay = () => {
   if (props.closeOnclickOverlay) {
+    close();
+  }
+};
+
+const cancel = () => {
+  if (props.ok && props.ok() != false) {
+    //如果ok函数存在且返回值不为false
+    close();
+  }
+};
+const ok = () => {
+  if (props.cancel && props.cancel() != false) {
+    //如果cancel函数存在且返回值不为false
     close();
   }
 };

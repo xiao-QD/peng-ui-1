@@ -5,6 +5,8 @@
     :visible="x"
     @update:visible="x = $event"
     :closeOnclickOverlay="true"
+    :ok="f1"
+    :cancel="f2"
   ></Dialog>
 </template>
 
@@ -17,6 +19,10 @@ const x = ref(false);
 const toggle = () => {
   x.value = !x.value;
 };
+const f1 = () => {
+  return false;
+};
+const f2 = () => {};
 </script>
 
 <style scoped></style>
