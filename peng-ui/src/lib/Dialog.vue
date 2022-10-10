@@ -1,22 +1,24 @@
 <template>
   <template v-if="visible">
-    <div class="peng-dialog-overlay" @click="onclickOverlay"></div>
-    <div class="peng-dialog-wrapper">
-      <div class="peng-dialog">
-        <header>
-          <slot name="title"></slot>
-          <span @click="close" class="peng-dialog-close"></span>
-        </header>
-        <main>
-          <!-- 使用插槽，将外界内容传进来 -->
-          <slot name="content"></slot>
-        </main>
-        <footer>
-          <Button @click="cancel">取消</Button>
-          <Button @click="ok" level="main">确定</Button>
-        </footer>
+    <teleport to="body">
+      <div class="peng-dialog-overlay" @click="onclickOverlay"></div>
+      <div class="peng-dialog-wrapper">
+        <div class="peng-dialog">
+          <header>
+            <slot name="title"></slot>
+            <span @click="close" class="peng-dialog-close"></span>
+          </header>
+          <main>
+            <!-- 使用插槽，将外界内容传进来 -->
+            <slot name="content"></slot>
+          </main>
+          <footer>
+            <Button @click="cancel">取消</Button>
+            <Button @click="ok" level="main">确定</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </teleport>
   </template>
 </template>
 
