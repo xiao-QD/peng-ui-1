@@ -4,11 +4,12 @@
     <div class="peng-dialog-wrapper">
       <div class="peng-dialog">
         <header>
-          标题 <span @click="close" class="peng-dialog-close"></span>
+          <slot name="title"></slot>
+          <span @click="close" class="peng-dialog-close"></span>
         </header>
         <main>
-          <p>1</p>
-          <p>2</p>
+          <!-- 使用插槽，将外界内容传进来 -->
+          <slot name="content"></slot>
         </main>
         <footer>
           <Button @click="cancel">取消</Button>
@@ -36,6 +37,7 @@ const props = defineProps({
   cancel: {
     type: Function,
   },
+  //外界传进来的标题
 });
 const emits = defineEmits(["update:visible", "ok", "cancel"]);
 const close = () => {
