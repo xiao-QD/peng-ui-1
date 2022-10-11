@@ -51,15 +51,17 @@ const onclickOverlay = () => {
   }
 };
 
-const cancel = () => {
+const ok = () => {
   if (props.ok && props.ok() != false) {
     //如果ok函数存在且返回值不为false
+
     close();
   }
 };
-const ok = () => {
+const cancel = () => {
   if (props.cancel && props.cancel() != false) {
     //如果cancel函数存在且返回值不为false
+
     close();
   }
 };
